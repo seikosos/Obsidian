@@ -1069,7 +1069,7 @@ local function New(ClassName: string, Properties: { [string]: any }): any
     end
     FillInstance(Properties, Instance)
 
-    if Properties["Parent"] and not Properties["ZIndex"] and Instance:IsA("GuiObject") then
+    if Properties["Parent"] and not Properties["ZIndex"] and Instance:IsA("GuiObject") and Properties.Parent:IsA("GuiObject") then
         pcall(function()
             Instance.ZIndex = Properties.Parent.ZIndex
         end)
