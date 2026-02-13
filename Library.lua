@@ -1069,7 +1069,7 @@ local function New(ClassName: string, Properties: { [string]: any }): any
     end
     FillInstance(Properties, Instance)
 
-    if Properties["Parent"] and not Properties["ZIndex"] and Instance["ZIndex"] then
+    if Properties["Parent"] and not Properties["ZIndex"] and pcall(function() return Instance.ZIndex end) then
         pcall(function()
             Instance.ZIndex = Properties.Parent.ZIndex
         end)
